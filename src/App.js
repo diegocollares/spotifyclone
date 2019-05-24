@@ -2,10 +2,11 @@ import React, { Fragment } from 'react';
 
 import GlobalStyle from './styles/global';
 
-import { Wrapper, Container } from './styles/components';
+import { Wrapper, Container, Content } from './styles/components';
 
 import Sidebar from './components/sidebar/';
 import Player from './components/player';
+import Header from './components/header';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Wrapper>
         <Container>
           <Sidebar />
+          <Content>
+            <Header />
+          </Content>
         </Container>
         <Player />
       </Wrapper>

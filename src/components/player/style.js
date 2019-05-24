@@ -46,3 +46,35 @@ export const Volume = styled.div`
     margin-right: 5px;
   }
 `;
+
+export const Progress = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Controls = styled.div`
+  display: flex;
+
+  button {
+    background: transparent;
+    border: 0;
+    margin: 0 15px;
+  }
+`;
+
+export const Time = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+
+  span {
+    font-size: 11px;
+    color: #b3b3b3;
+  }
+`;
+
+export const ProgressSlider = styled.div`
+  width: 500px;
+  margin: 0 15px;
+`;

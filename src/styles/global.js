@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'rc-slider/assets/index.css';
+
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -19,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
     color:#fff;
     font-family: 'Montserrat', sans-serif;
   }
-
 `;
 
 export default GlobalStyle;

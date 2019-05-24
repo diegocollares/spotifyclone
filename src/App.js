@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+import GlobalStyle from './styles/global';
+
+import Sidebar from './components/sidebar/';
 
 function App() {
   return (
-    <h2>Olá mundo!</h2>
+    <Fragment>
+      <GlobalStyle />
+      <Sidebar />
+    </Fragment>
   );
 }
 

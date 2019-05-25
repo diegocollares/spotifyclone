@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from './styles/global';
 
@@ -8,20 +9,23 @@ import Sidebar from './components/sidebar/';
 import Player from './components/player';
 import Header from './components/header';
 
+import Routes from './routes';
+
 function App() {
   return (
-    <Fragment>
+    <BrowserRouter>
       <GlobalStyle />
       <Wrapper>
         <Container>
           <Sidebar />
           <Content>
             <Header />
+            <Routes />
           </Content>
         </Container>
         <Player />
       </Wrapper>
-    </Fragment>
+    </BrowserRouter>
   );
 }
 

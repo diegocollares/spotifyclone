@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Container, NewPlayList, Nav } from './style';
 
@@ -9,7 +10,7 @@ const Sidebar = () => (
     <div>
       <Nav main>
         <li>
-          <a href="#">Navegar</a>
+          <Link to="/">Navegar</Link>
         </li>
         <li>
           <a href="#">Rádio</a>

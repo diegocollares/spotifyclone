@@ -5,6 +5,8 @@ import { Container, Header, Songlist } from './style';
 import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 
+console.tron.log('BRAZIL =>', new Date());
+
 const Playlist = () => (
   <Container>
     <Header>

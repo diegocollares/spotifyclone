@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
@@ -11,9 +11,20 @@ import { Container, NewPlayList, Nav } from './style';
 import AddPlayListIcon from '../../assets/images/add_playlist.svg';
 
 class Sidebar extends Component {
+  static propTypes = {
+    getPlaylistsRequest: PropTypes.func.isRequired,
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          ttile: PropTypes.string.isRequired,
+        }).isRequired
+      ),
+    }),
+  };
+
   componentDidMount() {
     this.props.getPlaylistsRequest();
-    console.tron.log('props ==>', this.props.playlists);
   }
 
   render() {

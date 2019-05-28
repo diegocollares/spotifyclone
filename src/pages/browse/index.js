@@ -1,45 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
+
 import { Container, Title, List, Playlist } from './style';
 
-const Browse = () => (
-  <Container>
-    <Title>Navegar</Title>
+class Browse extends Component {
+  componentDidMount() {
+    this.props.getPlaylistsRequest();
+  }
+  render() {
+    return (
+      <Container>
+        <Title>Navegar</Title>
 
-    <List>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://cdnb.artstation.com/p/assets/images/images/013/075/341/large/raphael-phillips-screen01.jpg?1537940196"
-          alt="Playlist"
-        />
-        <strong>O melhor do trap mundial</strong>
-        <p>Essa seleção com o melhor do trap vai fazer voÇe surfar no Hype</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://cdnb.artstation.com/p/assets/images/images/013/075/341/large/raphael-phillips-screen01.jpg?1537940196"
-          alt="Playlist"
-        />
-        <strong>O melhor do trap mundial</strong>
-        <p>Essa seleção com o melhor do trap vai fazer voÇe surfar no Hype</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://cdnb.artstation.com/p/assets/images/images/013/075/341/large/raphael-phillips-screen01.jpg?1537940196"
-          alt="Playlist"
-        />
-        <strong>O melhor do trap mundial</strong>
-        <p>Essa seleção com o melhor do trap vai fazer voÇe surfar no Hype</p>
-      </Playlist>
-      <Playlist to="/playlists/1">
-        <img
-          src="https://cdnb.artstation.com/p/assets/images/images/013/075/341/large/raphael-phillips-screen01.jpg?1537940196"
-          alt="Playlist"
-        />
-        <strong>O melhor do trap mundial</strong>
-        <p>Essa seleção com o melhor do trap vai fazer voÇe surfar no Hype</p>
-      </Playlist>
-    </List>
-  </Container>
-);
+        <List>
+          {this.props.playlists.data.map(playlist => (
+            <Playlist key={playlist.id} to={`/playlists/${playlist.id}`}>
+              <img src={playlist.thumbnail} alt="Playlist" />
+              <strong>{playlist.title}</strong>
+              <p>{playlist.description}</p>
+            </Playlist>
+          ))}
+        </List>
+      </Container>
+    );
+  }
+}
 
-export default Browse;
+const mapStateToProps = state => ({
+  playlists: state.playlists,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(PlaylistsActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Browse);

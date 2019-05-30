@@ -5,16 +5,30 @@ import { bindActionCreators } from 'redux';
 
 import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 
+import Loading from '../../components/loading';
+
 import { Container, Title, List, Playlist } from './style';
 
 class Browse extends Component {
+  static propTypes = {
+    getPlaylistsRequest: PropTypes.func.isRequired,
+    playlists: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+        })
+      ),
+      loading: PropTypes.bool,
+    }).isRequired,
+  };
   componentDidMount() {
     this.props.getPlaylistsRequest();
   }
   render() {
     return (
       <Container>
-        <Title>Navegar</Title>
+        <Title>Navegar {this.props.loading && <Loading />}</Title>
 
         <List>
           {this.props.playlists.data.map(playlist => (

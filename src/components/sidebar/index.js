@@ -19,7 +19,7 @@ class Sidebar extends Component {
       data: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.number.isRequired,
-          ttile: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
         })
       ),
       Loading: PropTypes.bool,
@@ -82,7 +82,7 @@ class Sidebar extends Component {
 
             {this.props.playlists.data.map(playlist => (
               <li key={playlist.id}>
-                <Link to={`playlists/${playlist.id}`}>{playlist.title}</Link>
+                <Link to={`/playlists/${playlist.id}`}>{playlist.title}</Link>
               </li>
             ))}
           </Nav>
